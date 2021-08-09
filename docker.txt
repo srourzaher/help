@@ -1,0 +1,22 @@
+--build un image
+docker build -t smallest .
+
+--run image
+docker run -it ubuntu bash
+
+docker run -d -p 8080:8080 -t spring-boot:1.0
+
+-- lister les containers
+docker container ls
+--lister les images
+docker images
+-- stopper un container
+docker container stop {id-container}
+
+
+docker image rm 
+
+docker container logs 221ff465fb5d
+
+
+ docker-compose up

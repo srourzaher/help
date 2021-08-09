@@ -1,0 +1,111 @@
+kubectl get nodes
+kubectl describe nodes
+
+
+kubectl get pods
+kubectl get pods  --namespace=bulot-sge-dev-01
+kubectl get pods -o wide
+kubectl describe podes
+kubectl run <name of pod> --image=<name of the image from registry>
+kubectl exec -ti pod-name curl localhost:8080
+kubectl exec $POD_NAME env
+kubectl exec -ti $POD_NAME bash
+
+kubectl logs pod-name
+
+apiVersion: v1
+kind: Pod
+metadata:
+   name: Tomcat
+spec:
+   containers:
+   - name: Tomcat
+    image: tomcat: 8.0
+    ports:
+containerPort: 7500
+   imagePullPolicy: Always
+
+kubectl create –f tomcat.yml
+
+
+
+
+
+kubectl get deployments
+
+
+kubectl logs $POD_NAME
+
+//create deployement
+kubectl create deployment kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1
+
+//expose deployment
+kubectl expose deployment/kubernetes-bootcamp --type="NodePort" --port 8080
+
+
+
+
+//get the node port
+export NODE_PORT=$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')
+echo NODE_PORT=$NODE_PORT
+
+//scale 
+kubectl get rs
+kubectl scale deployments/kubernetes-bootcamp --replicas=2
+ kubectl get replicasets
+ kubectl describe replicasets
+
+//update the version of image
+ kubectl rollout status deployment/Deployment
+kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2
+kubectl rollout undo deployment/Deployment –to-revision=2
+
+//The update can be confirmed also by running a rollout status command:
+kubectl rollout status deployments/kubernetes-bootcamp
+
+
+curl $(minikube ip):$NODE_PORT
+
+//rollback
+kubectl rollout undo deployments/kubernetes-bootcamp
+
+kubectl proxy
+curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/proxy/
+
+
+kubectl delete deployment -l app=redis
+kubectl delete service -l app=redis
+kubectl delete deployment -l app=guestbook
+kubectl delete service -l app=guestbook
+
+kubectl get services
+kubectl get services -l run=kubernetes-bootcamp
+minikube service nom-service --url
+//fichier yml
+---------------------------------
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: load-balancer-example
+  name: hello-world
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: load-balancer-example
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: load-balancer-example
+    spec:
+      containers:
+      - image: gcr.io/google-samples/node-hello:1.0
+        name: hello-world
+        ports:
+        - containerPort: 8080
+-------------------------------------------
+kubectl apply -f https://k8s.io/examples/service/load-balancer-example.yaml
+kubectl expose deployment hello-world --type=LoadBalancer --name=my-service
+kubectl create namespace <insert-namespace-name-here>
+kubectl get namespace

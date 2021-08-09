@@ -1,0 +1,115 @@
+//**** config
+//pour retourner le repository d'un projet
+git remote -v
+
+//pour faire pointer un projet sur un nouveau repot
+ git remote set-url origin https://bitbucket.org/srourza/test.git
+
+ //add remote origin to the local repository
+ git remote add origin https://bitbucket.org/srourza/example3 
+
+
+//pour modifier un message de commit
+git commit --amend
+
+
+//Si vous voulez annuler votre dernier commit 
+git reset HEAD^
+
+/*
+ HEAD : dernier commit ;
+
+ HEAD^ : avant-dernier commit ;
+
+ HEAD^^ : avant-avant-dernier commit ;
+
+ HEAD~2 : avant-avant-dernier commit (notation équivalente) ;
+
+ d6d98923868578a7f38dea79833b56d0326fcba1 : indique un numéro de commit précis ;
+
+ d6d9892 : indique un numéro de commit précis (notation équivalente à la précédente, bien souvent écrire les premiers chiffres est suffisant tant qu’aucun autre commit ne commence par les mêmes chiffres).
+ 
+ */
+ 
+ //si vous voulez annuler le dernier commit et perd les modifs
+ git reset --hard HEAD^ 
+ 
+ //Annuler les modifications d’un fichier avant un commit
+ git checkout nomfichier
+ 
+ //Annuler/Supprimer un fichier avant un commit
+ git reset HEAD -- fichier_a_supprimer
+ git reset --hard HEAD
+ 
+ 
+ //***************************************************
+ //add all 
+ >git add --all
+ //Commit avec commentaires
+ >git commit -m "Mise en forme de la pa..."
+ //push 
+ git push origin master
+ 
+ //*******************
+ //rebase
+ git rebase master
+ 
+ 
+ //**********************
+ //create new branch
+ git checkout -b br_rg_list_claims
+ 
+ 
+ 
+ 
+ Votre dépôt est vide
+Pour commencer, vous devez exécuter ces commandes dans votre terminal.
+
+Nouveau sur Git ? Apprendre les commandes de base de Git
+Configure Git pour la première fois
+git config --global user.name "SROUR Zaher"
+git config --global user.email "externe.zaher.srour@allianz.fr"
+En train de travailler avec ton dépôt
+Je veux juste cloner ce dépôt
+Si vous voulez simplement cloner ce dépôt vite exécuter cette commande dans votre terminal.
+
+git clone http://SROUR@bitbucket/scm/d1/d1-common-api.git
+Mon code est prêt pour être envoyé
+Si tu as déjà du code prêt pour être envoyé à ce dépôt alors exécute ceci sur ton terminal.
+
+cd existing-project
+git init
+git add --all
+git commit -m "Initial Commit"
+git remote add origin http://SROUR@bitbucket/scm/d1/d1-common-api.git
+git push -u origin master
+Mon code est déjà suivi par Git
+Si ton code est déjà suivi par Git alors établis ce dépôt comme ton «origine» vers où envoyer.
+
+cd existing-project
+git remote set-url origin http://SROUR@bitbucket/scm/d1/d1-common-api.git
+git push -u origin --all
+git push origin --tags
+
+//********************************* gerer les tags
+#créer un tags en local
+git tag -a rec -m "commentatire"
+# pusher le tag sur le serveur
+git push --follow-tags
+# checkout the specific tag
+git checkout tags/<tag> -b <branch>
+
+
+git reset --hard origin/underConstruction
+
+git reset --hard origin/fix/prod-defects
+
+
+//************refresh username/password
+git config --system --unset credential.helper  //depuis un compte admin
+
+
+// delete branch locally
+git branch -d localBranchName
+
+ 
