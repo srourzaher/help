@@ -1,0 +1,5 @@
+*** pour mettre à jour la version du parent dans les different modules
+mvn versions:update-parent -DallowSnapshots=true -DgenerateBackupPoms=false
+
+*** pour installer uniquement le parent sans les modules
+mvn clean install -N
