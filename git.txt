@@ -33,6 +33,11 @@ git reset HEAD^
  
  //si vous voulez annuler le dernier commit et perd les modifs
  git reset --hard HEAD^ 
+
+*** pour faire reset 
+git reset --hard
+*** pour faire reset à partir d'origin
+git reset --hard origin/master
  
  //Annuler les modifications d’un fichier avant un commit
  git checkout nomfichier
@@ -111,5 +116,10 @@ git config --system --unset credential.helper  //depuis un compte admin
 
 // delete branch locally
 git branch -d localBranchName
+// et puis commiter la suppression de la branche
+git push origin --delete localBranchName
+
+*** merge avec l'option squash
+git merge --squash branch-name
 
  
