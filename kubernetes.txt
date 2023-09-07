@@ -1,7 +1,27 @@
 kubectl get nodes
 kubectl describe nodes
 
+//*********** commandes pour interroger les deployments *********
+--pour créer un deployement
+kubectl create deployment kubernetes-bootcamp --image=gcr.io/google-samples/kubernetes-bootcamp:v1
+--pour lister les deployments
+kubectl get deployments
+--pour supprimer un deployment (y compris les pods)
+kubectl delete deployment 'deploymentname'
 
+//*********** mettre en place un proxy pour interroger le reseau interne de proxy **********
+--lancer le proxy
+kubectl proxy
+--retourne la version 
+curl http://localhost:8001/version
+--exporter le pod name
+export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')
+echo Name of the Pod: $POD_NAME
+--pour acceder au pod en question
+curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/
+
+
+//*********** commands pour interroger les pods ******
 kubectl get pods
 kubectl get pods  --namespace=bulot-sge-dev-01
 kubectl get pods -o wide
