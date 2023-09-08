@@ -1,3 +1,16 @@
+//******** commandes pour interroger Minikubernets   **********
+minikube delete --all
+minikube stop
+minikube start
+minikube pause
+minikube unpause
+minikube config set memory 9001
+
+
+
+kubectl proxy
+ minikube tunnel
+
 kubectl get nodes
 kubectl describe nodes
 
@@ -19,6 +32,33 @@ export POD_NAME=$(kubectl get pods -o go-template --template '{{range .items}}{{
 echo Name of the Pod: $POD_NAME
 --pour acceder au pod en question
 curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/
+
+//************ commandes pour interroger les services ****************
+--pour exposer un service
+kubectl expose deployment/kubernetes-bootcamp --type="NodePort" --port 8080
+--pour retouner la liste des services
+kubectl get services
+--decribe services
+kubectl describe services/kubernetes-bootcamp
+--retourne the node port 
+export NODE_PORT="$(kubectl get services/kubernetes-bootcamp -o go-template='{{(index .spec.ports 0).nodePort}}')"
+echo "NODE_PORT=$NODE_PORT"
+--pour tester le service (port node)
+curl http://"$(minikube ip):$NODE_PORT"
+--chercher en utilisant le label
+kubectl get pods -l app=kubernetes-bootcamp
+kubectl get services -l app=kubernetes-bootcamp
+--get the pod name of the service
+export POD_NAME="$(kubectl get pods -o go-template --template '{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}')"
+echo "Name of the Pod: $POD_NAME"
+--tester l'url à l'interieur de cluster
+kubectl exec -ti $POD_NAME -- curl http://localhost:8080
+--delete un service
+kubectl delete service -l app=kubernetes-bootcamp
+
+
+
+
 
 
 //*********** commands pour interroger les pods ******
