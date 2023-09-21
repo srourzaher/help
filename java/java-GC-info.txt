@@ -1,0 +1,22 @@
+il y a plusieurs types de GC
+-- Serial Garbage Collector:
+It uses the only thread for garbage collection.
+It works by holding all the threads of an application. It means that threads of the application freeze by the serial garbage collector during the garbage collection.
+If you want to use the serial garbage collector, execute the -XX:+UseSerialGC
+
+--Parallel Garbage Collector
+The working of the parallel garbage collector is the same as the serial garbage collector.
+The only difference between serial and parallel garbage collector is that serial garbage collector uses a single thread for garbage collection process while the parallel garbage collector uses multiple threads for the garbage collection.
+If you want to use the parallel garbage collector, execute the -XX:+UseParallelGC
+
+--Concurrent Mark and Sweep (CMS) Garbage Collector
+ CMS concurrently marks objects while the application runs and sweeps the unused objects at the end.
+ CMS uses multiple threads that scan the heap and during the scanning, it marks the instances for eviction, after scanning.
+
+ --Garbage First (G1) Garbage Collector
+ The G1 garbage collector is used if we have a large (more than 4GB) memory (heap space). It divides the heap into equal-sized (usually 1MB to 32MB) chunks, prioritizes them, and then performs the parallel garbage collection on that chunks based on the priority.
+ The Eden, survivors, and old areas use this equal-sized region for the memory allocation of the objects.
+
+ --ref
+ https://www.javatpoint.com/types-of-garbage-collector-in-java
+ https://medium.com/@the.york.wei/java-cms-and-g1-garbage-collector-8ed935f7bb91
