@@ -1,0 +1,66 @@
+le bute de l'architecture logiciel est de facililter le developpement,
+l'évolution, le deploiement et la maintenance d'un système, donc minimiser le temps et le cout de réalisation
+et maximiser la productivitédes developpeurs faces aux changements.
+
+Isolation par couches:
+on part de la couche qui concerne les détails jusqu'à la couche la plus critique
+Règle de dépendance:
+la couche la plus basse ne depend de rien qui constitue les règles les plus critiques qui sont les régles métiers
+la couche au dessus qui represente la façon dont les règles metiers dont utilisés, dans quel ordre, dans quel sens
+le flow de la domaine va etre utilisé.
+
+SOLID:
+S:  Single Responsibility Principle
+la classe doit avoir une seule et unique responsabilité
+
+O: Open/close
+Cela signifie que l’on doit toujours favoriser l’extension du code à sa modification : on ne modifie pas
+le fonctionnement suivant l’entité à utiliser, on définit une fonction commune.
+
+L : Liskov’s Substitution Principle (LSP)
+L’idée du principe est que les enfants ne peuvent pas faire plus ou moins que leur parent.
+c'est à dire la classe fille doit respecter les methodes (paramètres, resultat et exception) de sa mère
+
+I : Interface Segregation Principle (ISP)
+Aucun client ne devrait être forcé d'implémenter des méthodes / fonctions qu'il n'utilise pas.
+
+D : Dependency Inversion Principle (DIP)
+Une classe doit dépendre de son abstraction, pas de son implémentation.
+
+
+
+ARCHITECTE APPLICATIVE:
+De manière générale, l’Architecture Applicative apporte les éléments suivants:
+
+une vue globale des éléments applicatifs
+une description précise du comportement attendu de chaque élément
+une description des interactions possibles entre les éléments
+une description des données utilisées et échangées par les éléments
+une feuille de route des grandes étapes de mise en oeuvre
+un guide de description et d’implémentation
+des modèles réutilisables de solutions (voir Architecture de Solution/LIEN)
+
+Comme nous l’avons vu, l’Architecture Applicative regroupe une grande variété de contextes et cas d’utilisation totalement différents.
+Cela concerne des applications nouvelles, web ou mobile, aussi bien que applications existant depuis plusieurs décennies, époque où l’internet le PC n’existaient pas.
+Ensuite, selon la culture et l’activité des entreprises, les besoins en termes de sécurité, d’agilité, de conformité… sont très différents.
+
+Role:
+-garant de la cohérence de l’architecture des différentes applications sur les principes fondamentaux élaborés
+dans le cadre d’une architecture de référence au niveau de son groupe paritaire
+-collabore avec les différents architectes, participe à des ateliers afin d’identifier les meilleures pratiques ou solutions.
+-collecte également les expressions de besoins des métiers SI pour la rédaction de spécifications techniques des frameworks,
+-supervise leur implémentation et contribue à l’industrialisation de la plate-forme de développement.
+-exige de savoir assembler et configurer des composants matériels ou logiciels dans le respect des standards techniques et des règles de sécurité.
+- La mise en place d’une démarche qualité est nécessaire afin d’identifier les meilleures pratiques ou solutions.
+
+conclusion:
+l'architecte applicatif a pour role:
+-etudier les besoins fonctionnels, le context (le systeme existant , les systemes externes dont le nouveau systeme depends)
+-definir la vue globle avec les differents elements du projet
+-faire une description precise du comportement de chaque element
+-decrire les interactions possibles entre les elements
+-decrire les données utilisées et échangées (flux, format des données) entre les elements ou entre le systeme et l'eterieur
+-collaborer avec les differents architectes (données, integration)
+-exige de savoir assembler et configurer des composants matériels ou logiciels dans le respect des standards techniques et des règles de sécurité
+-veuiller à respecter les bonnes architectures logicielles pour faciliter le developpement, l'évolution, le deploiement et la maintenance d'un system.
+

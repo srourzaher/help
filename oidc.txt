@@ -1,0 +1,8 @@
+---SAML
+1-L’utilisateur va demander à l’application A de contacter l’application B.
+2-Il est redirigé par l’application A vers l’application B et il s’authentifie sur cette dernière.
+3-L’application B va alors demander à l’utilisateur s’il autorise ou non l’application A à accéder aux ressources hébergées dans l’application B. Si l’utilisateur l’autorise, l’application B va envoyer un code d’autorisation au navigateur web de l’utilisateur.
+4-Ce code est ensuite communiqué à l’application A.
+5-Dès lors, le code est envoyé de l’application A vers la B pour obtenir en échange un jeton d’accès. Ce jeton a pour objectif d’éviter de communiquer les codes d’accès de l’utilisateur de l’application B à l’application A. On gagne ainsi en sécurité et en simplicité.
+7-Le jeton d’accès est transmis à l’application A.
+8-L’application A peut ainsi demander, via le jeton d’accès, d’accéder aux données de l’application B.
